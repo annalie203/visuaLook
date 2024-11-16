@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+   /* Fade-in efek */
+   body {
+      opacity: 0; /* Awal dengan opacity 0 */
+      transition: opacity 1.5s ease-in; /* Efek transisi fade-in */
+    }
+    body.fade-in {
+      opacity: 1; /* Akhir dengan opacity 1 */
+    }
+    /* Menambahkan transisi smooth untuk gambar */
+    .image-transition {
+      transition: transform 0.9s ease-in-out, opacity 0.5s ease-in-out;
+    }
+    /* Styling untuk kotak gambar */
+    .circle-image {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 10px;
+      transition: transform 0.5s ease-in-out;
+    }
+    .circle-image:hover {
+      transform: rotate(360deg);
+    }
+    .circle-image img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      transition: filter 0.3s ease;
+    }
+    .circle-image:hover img {
+      filter: grayscale(100%);
+    }
+    .circle-image .info {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .circle-image:hover .info {
+      opacity: 1;
+    }
+
+    /* Styling footer */
+    footer {
+      background-color: black;
+      color: white;
+      padding: 20px;
+    }
+    footer .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    footer .footer-content img {
+      width: 30px;
+      height: 30px;
+    }
+    footer .contact-info {
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<!-- Musik Pemutar Otomatis di Atas -->
+<audio autoplay>
+  <source src="./music/Moavii - To Late (freetouse.com).mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
+
+<body class="bg-white text-black font-sans">
+  <div class="max-w-[1440px] mx-auto p-4">
+    <!-- Header -->
+    <header class="bg-black text-white flex justify-between items-center p-4">
+      <img src="./images/logo rayhan.png" alt="Logo" class="w-28">
+      <nav class="flex gap-4">
+        <a href="#about-me" class="text-lg">About Me</a>
+        <a href="#my-work" class="text-lg">My Work</a>
+        <a href="#ring-me" class="text-lg">Ring Me</a>
+        <a href="#pricelist" class="text-lg">Pricelist</a>
+      </nav>
+    </header>
+
+    <!-- About Me Section -->
+    <section id="about-me" class="text-center py-10">
+      <h1 class="text-4xl font-bold mb-4 relative">
+        About Me
+        <!-- Garis Tipis di Kanan dan Kiri -->
+        <div class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1/4 h-[1px] bg-black"></div>
+        <div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/4 h-[1px] bg-black"></div>
+      </h1>
+      <img src="./images/me.jpg" alt="Profile Picture" class="w-40 h-40 rounded-full mx-auto mb-6">
+      <p class="text-lg leading-relaxed max-w-2xl mx-auto">
+        A passionate graphic designer on an exhilarating quest to conjure breathtaking visuals that leave a lasting impression!
+        What’s the strategy? Weaving creative enchantments to make your brand shine with unparalleled brilliance!
+      </p>
+    </section>
+
+    <!-- Follow Me Section (logo kiri, tulisan kanan) -->
+    <div class="flex justify-center items-center mt-6 gap-4">
+      <a href="https://instagram.com/rayhanfirmansyah17" target="_blank">
+        <img src="./images/logo ig bw.png" alt="Icon" class="w-10">
+      </a>
+      <p class="text-xl">Follow Me</p>
+    </div>
+
+<!-- My Work Section -->
+<section id="my-work" class="py-10">
+  <h1 class="text-4xl font-bold text-center mb-4 relative">
+    My Work
+    <div class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1/4 h-[1px] bg-black"></div>
+    <div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/4 h-[1px] bg-black"></div>
+  </h1>
+
+  <div class="relative flex justify-center items-center">
+    <button id="prev" class="absolute left-4 bg-gray-200 p-2 rounded-full hover:bg-gray-300">
+      Prev
+    </button>
+    
+    <div class="group relative w-[500px] h-[500px]">
+      <img id="work-image" src="./images/me.jpg" alt="Work Image" class="w-full h-full object-cover transition duration-300 ease-in-out">
+      <div id="info-text" class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300 ease-in-out">
+        <p class="text-white text-lg">Info: This is my work</p>
+      </div>
+    </div>
+
+    <button id="next" class="absolute right-4 bg-gray-200 p-2 rounded-full hover:bg-gray-300">
+      Next
+    </button>
+  </div>
+</section>
+
+    <!-- My Work 2 Section (Scrolling images) -->
+    <section id="my-work-2" class="py-10">
+      <div class="flex overflow-x-auto gap-4 py-8">
+        <img src="./images/me.jpg" alt="Work Image 1" class="w-[300px] h-[300px] object-cover rounded-md transition-all hover:scale-105 duration-300">
+        <img src="./images/cnth gambar 2.jpeg" alt="Work Image 2" class="w-[300px] h-[300px] object-cover rounded-md transition-all hover:scale-105 duration-300">
+        <img src="./images/contoh gmbr1.png" alt="Work Image 3" class="w-[300px] h-[300px] object-cover rounded-md transition-all hover:scale-105 duration-300">
+        <img src="./images/contoh gmbr2.jpg" alt="Work Image 4" class="w-[300px] h-[300px] object-cover rounded-md transition-all hover:scale-105 duration-300">
+        <img src="./images/contoh gmbr2.jpg" alt="Work Image 5" class="w-[300px] h-[300px] object-cover rounded-md transition-all hover:scale-105 duration-300">
+      </div>
+    </section>
+
+    <!-- Pricelist Section -->
+    <section id="pricelist" class="py-10 text-center">
+      <h1 class="text-4xl font-bold relative mb-8">
+        Pricelist
+        <div class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1/4 h-[1px] bg-black"></div>
+        <div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/4 h-[1px] bg-black"></div>
+      </h1>
+      <div class="flex justify-center gap-6">
+        <!-- Kotak gambar bulat 1 -->
+        <div class="circle-image">
+          <img src="./images/contoh gmbr2.jpg" alt="Design Image 1">
+          <div class="info">
+            <h2 class="font-bold">Design Feeds</h2>
+            <p>250k/design</p>
+          </div>
+        </div>
+
+        <!-- Kotak gambar bulat 2 -->
+        <div class="circle-image">
+          <img src="./images/contoh gmbr2.jpg" alt="Design Image 2">
+          <div class="info">
+            <h2 class="font-bold">Design Feeds</h2>
+            <p>250k/design</p>
+          </div>
+        </div>
+
+        <!-- Kotak gambar bulat 3 -->
+        <div class="circle-image">
+          <img src="./images/contoh gmbr2.jpg" alt="Design Image 3">
+          <div class="info">
+            <h2 class="font-bold">Design Feeds</h2>
+            <p>250k/design</p>
+          </div>
+        </div>
+
+        <!-- Kotak gambar bulat 4 -->
+        <div class="circle-image">
+          <img src="./images/contoh gmbr2.jpg" alt="Design Image 4">
+          <div class="info">
+            <h2 class="font-bold">Design Feeds</h2>
+            <p>250k/design</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-content flex justify-center items-center gap-10">
+        <!-- Logo dan info kontak -->
+        <div class="flex items-center gap-4">
+          <a href="mailto:rayhanfirmansyah305@gmail.com">
+            <img src="./images/logo email.png" alt="Email Logo">
+          </a>
+          <p class="contact-info">rayhanfirmansyah305@gmail.com</p>
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="https://instagram.com/rayhanfirmansyah17" target="_blank">
+            <img src="./images/logo ig putih.png" alt="Instagram Logo">
+          </a>
+          <p class="contact-info">rayhanfirmansyah17</p>
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="https://wa.me/089651087298" target="_blank">
+            <img src="./images/logo tlpn.png" alt="Phone Logo">
+          </a>
+          <p class="contact-info">089651087298</p>
+        </div>
+      </div>
+    </footer>
+    
+
+ <!-- JavaScript untuk menampilkan gambar -->
+ <script>
+  const images = [
+    "./images/me.jpg",
+    "./images/cnth gambar 2.jpeg",
+    "./images/contoh gmbr1.png",
+    "./images/contoh gmbr2.jpg"
+  ];
+  let currentIndex = 0;
+
+  const workImage = document.getElementById('work-image');
+  const infoText = document.getElementById('info-text');
+
+  document.getElementById('next').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    workImage.src = images[currentIndex];
+  });
+
+  document.getElementById('prev').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    workImage.src = images[currentIndex];
+  });
+</script>
+ <!-- Fade-in activation -->
+ <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('fade-in');
+  });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
